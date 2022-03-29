@@ -27,7 +27,7 @@ namespace SchoolAPI.Repositories
 
         public static async Task<bool> ClassExistsAsync(int id, SchoolApiContext context)
         {
-            return context.Classes.Any(e => e.Id == id);
+            return await context.Classes.AnyAsync(e => e.Id == id);
         }
 
         public static async Task<Class> UpdateClassByIdAsync(Class classroom, SchoolApiContext context)

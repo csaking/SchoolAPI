@@ -21,7 +21,13 @@ namespace SchoolAPI.Services
 
         public static async Task<Teacher?> GetTeacherByIdAsync(int id, SchoolApiContext context)
         {
-            return await TeacherRepository.GetTeacherByIdAsync(id, context);
+            var teacher = await TeacherRepository.GetTeacherByIdAsync(id, context);
+
+            var teacherClasses = await ClassService.GetClassesByTeacherIdAsync(id, context);
+
+            teacher.Classes = teacherClasses.ToList();
+
+            return teacher;
         }
 
         public static async Task<bool> TeacherExistsAsync(int id, SchoolApiContext context)

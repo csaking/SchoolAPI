@@ -11,6 +11,11 @@ namespace SchoolAPI.Services
             return await StudentClassRepository.GetStudentClassesByClassIdAsync(classId, context);
         }
 
+        public static async Task<IEnumerable<StudentClass>> GetStudentClassesByStudentIdAsync(int studentId, SchoolApiContext context)
+        {
+            return await StudentClassRepository.GetStudentClassesByStudentIdAsync(studentId, context);
+        }
+
         public static async Task<bool> StudentClassExistsAsync(int classId, int studentId, SchoolApiContext context)
         {
             return await StudentClassRepository.StudentClassExistsAsync(classId, studentId, context);

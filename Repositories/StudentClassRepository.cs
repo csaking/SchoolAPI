@@ -11,9 +11,17 @@ namespace SchoolAPI.Repositories
                 .Where(x => x.ClassId == classId)
                 .ToListAsync();
         }
+
+        public static async Task<IEnumerable<StudentClass>> GetStudentClassesByStudentIdAsync(int studentId, SchoolApiContext context)
+        {
+            return await context.StudentClasses
+                .Where(x => x.StudentId == studentId)
+                .ToListAsync();
+        }
+
         public static async Task<bool> StudentClassExistsAsync(int classId, int studentId, SchoolApiContext context)
         {       
-            return context.StudentClasses.Any(e => 
+            return await context.StudentClasses.AnyAsync(e => 
                 e.StudentId == studentId
                 && e.ClassId == classId
                 );

@@ -21,7 +21,13 @@ namespace SchoolAPI.Services
 
         public static async Task<Student?> GetStudentByIdAsync(int id, SchoolApiContext context)
         {
-            return await StudentRepository.GetStudentByIdAsync(id, context);
+            var student = await StudentRepository.GetStudentByIdAsync(id, context);
+
+            var studentClasses = await StudentClassService.GetStudentClassesByStudentIdAsync(id, context);
+
+            student.StudentClasses = studentClasses.ToList();
+
+            return student;
         }
 
         public static async Task<bool> StudentExistsAsync(int id, SchoolApiContext context)

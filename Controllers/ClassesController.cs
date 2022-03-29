@@ -128,7 +128,7 @@ namespace SchoolAPI.Controllers
         }
 
         [HttpPut, Route("enrol")]
-        public async Task<ActionResult<IActionResult>> EnrolStudents(int classId, int[] studentIds)
+        public async Task<IActionResult> EnrolStudents(int classId, int[] studentIds)
         {
             try
             {

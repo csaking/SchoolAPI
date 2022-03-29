@@ -129,7 +129,7 @@ namespace SchoolAPI.Controllers
         }
 
         [HttpPut, Route("assign/{teacherId}")]
-        public async Task<ActionResult<IEnumerable<Class>>> AssignClass(int teacherId, int[] classIds)
+        public async Task<IActionResult> AssignClass(int teacherId, int[] classIds)
         {
             try
             {

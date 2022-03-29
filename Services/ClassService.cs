@@ -71,6 +71,8 @@ namespace SchoolAPI.Services
 
         public static async Task<IEnumerable<Class>> AssignClassesToTeacherAsync(Teacher teacher, IEnumerable<Class> classes, SchoolApiContext context)
         {
+            if (teacher.Classes == null) teacher.Classes = new List<Class>();
+
             foreach (var classroom in classes)
             {
                 classroom.TeacherId = teacher.Id;
