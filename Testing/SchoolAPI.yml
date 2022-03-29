@@ -1,0 +1,17 @@
+﻿trigger:
+- develop
+
+pool:
+- vmImage: ubuntu-latest
+
+steps:
+- script: |
+   npm install -g newman
+  displayName: 'Install Newman'
+  workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+- script: |
+   newman run SchoolApiTests.postman_collection.json -e SchoolAPI_Environment.postman_environment.json --reporters cli,junit --reporter-junit-export junitReport.xmp
+  displayName: 'Run Test Collection in Newman'
+  continueOnError: false
+ 
