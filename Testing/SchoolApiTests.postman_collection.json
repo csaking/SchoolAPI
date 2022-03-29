@@ -1,0 +1,975 @@
+{
+	"info": {
+		"_postman_id": "66c0882e-2895-4c13-b090-9e212397e3fe",
+		"name": "SchoolApiTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Classes",
+			"item": [
+				{
+					"name": "Create Class -  Invalid - Long Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Class -  Invalid - Long Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"This is a name over 20 characters in length.\",\r\n  \"capacity\": 5,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Class -  Invalid - No Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Class -  Invalid - No Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"\",\r\n  \"capacity\": 5,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Class - Invalid - Low Capacity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Class -  Invalid - Low Capacity\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Valid Name\",\r\n  \"capacity\": 1,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Class -  Invalid - High Capacity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Class -  Invalid - High Capacity\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Valid Name\",\r\n  \"capacity\": 100,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Class -  Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Class -  Valid\"), function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"\r",
+									"pm.variables.set(\"classId\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Valid Name\",\r\n  \"capacity\": 5,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Class -  Invalid - Long Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Class -  Invalid - Long Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{classId}},\r\n  \"name\": \"This is a name over 20 characters in length.\",\r\n  \"capacity\": 5,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Class -  Invalid - Short Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Class -  Invalid - Short Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{classId}},\r\n  \"name\": \"\",\r\n  \"capacity\": 5,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Class -  Invalid - Low Capacity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Class -  Invalid - Low Capacity\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{classId}},\r\n  \"name\": \"Valid Name\",\r\n  \"capacity\": 1,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Class -  Invalid - High Capacity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Class -  Invalid - High Capacity\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{classId}},\r\n  \"name\": \"Valid Name\",\r\n  \"capacity\": 100,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Class -  Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Class -  Valid\"), function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{classId}},\r\n  \"name\": \"Updated Name\",\r\n  \"capacity\": 10,\r\n  \"teacherId\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/classes/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "Create Teacher - Invalid - No Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Teacher - Invalid - No Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/teachers/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Teacher - Invalid - Long Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Teacher - Invalid - Long Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"This is a name over 50 characters in length. This is a name over 50 characters in length.\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/teachers/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Teacher  - Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Teacher -  Valid\"), function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"\r",
+									"pm.variables.set(\"teacherId\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Valid Name\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/teachers/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher - Invalid - No Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Teacher - Invalid - No Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{teacherId}},\r\n  \"name\": \"\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/teachers/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher - Invalid - Long Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Teacher - Invalid - Long Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{teacherId}},\r\n  \"name\": \"This is a name over 50 characters in length. This is a name over 50 characters in length.\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/teachers/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher  - Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Teacher -  Valid\"), function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{teacherId}},\r\n  \"name\": \"Valid Name\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/teachers/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Create Student - Invalid - No Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Student - Invalid - No Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/students/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Student - Invalid - Long Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Student - Invalid - Long Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"This is a name over 50 characters in length. This is a name over 50 characters in length.\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/students/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Teacher - Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Create Student -  Valid\"), function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}\r",
+									"\r",
+									"var response = pm.response.json();\r",
+									"\r",
+									"pm.variables.set(\"studentId\", response.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Valid Name\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/students/create",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student - Invalid - No Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Student - Invalid - No Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{studentId}},\r\n  \"name\": \"\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/students/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student - Invalid - Long Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Student - Invalid - Long Name\"), function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{studentId}},\r\n  \"name\": \"This is a name over 50 characters in length. This is a name over 50 characters in length.\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/students/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student - Valid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update Student -  Valid\"), function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{studentId}},\r\n  \"name\": \"Valid Name\",\r\n  \"email\": \"test@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/students/edit",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "classId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "teacherId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "studentId",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
